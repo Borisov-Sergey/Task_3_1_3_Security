@@ -12,6 +12,7 @@
     <tr>
         <th>ID</th>
         <th>Username</th>
+        <th>Last name</th>
         <th>Password</th>
         <th>Email</th>
         <th>Age</th>
@@ -21,6 +22,7 @@
     <tbody>
     <td th:text="${user.getId()}"></td>
     <td th:text="${user.getUserName()}"></td>
+    <td th:text="${user.getLastName()}"></td>
     <td th:text="${user.getPassword()}"></td>
     <td th:text="${user.getEmail()}"></td>
     <td th:text="${user.getAge()}"></td>
@@ -28,9 +30,10 @@
     </tbody>
 </table>
 <br/>
+<a th:href="@{/user/admin}">Admin panel</a>
+<br/>
 <form th:action="@{/logout}" th:method="POST">
     <input type="submit" value="Logout"/>
 </form>
-<a href="/home">Home page</a>
 </body>
 </html>

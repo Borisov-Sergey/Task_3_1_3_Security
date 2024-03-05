@@ -12,6 +12,7 @@
 
 <form th:action="@{/auth/registration}" th:method="POST" th:object="${user}">
     <div><label for="userName"> User Name: <input type="text" th:field="*{userName}" id="userName"/> </label></div>
+    <div><label for="lastName"> Last name: <input type="text" th:field="*{lastName}" id="lastName"/> </label></div>
     <div><label for="email"> Email: <input type="text" th:field="*{email}" id="email"/> </label></div>
     <div><label for="age"> Age: <input type="text" th:field="*{age}" id="age"/> </label></div>
     <div><label for="password"> Password: <input type="password" th:field="*{password}" id="password"/> </label></div>

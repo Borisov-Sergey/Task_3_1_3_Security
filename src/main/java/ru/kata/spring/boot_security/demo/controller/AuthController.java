@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RegistrationServiceImpl;
+import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import java.util.Collections;
@@ -23,10 +24,13 @@ public class AuthController {
     private final UserService userService;
     private final RegistrationServiceImpl registrationService;
 
+    private final RoleService roleService;
+
     @Autowired
-    public AuthController(UserService userService, RegistrationServiceImpl registrationService) {
+    public AuthController(UserService userService, RegistrationServiceImpl registrationService, RoleService roleService) {
         this.userService = userService;
         this.registrationService = registrationService;
+        this.roleService = roleService;
     }
 
     @GetMapping("/login")
@@ -48,9 +52,6 @@ public class AuthController {
             model.addAttribute("message", "User exists!");
             return "registration";
         }
-
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
         registrationService.register(user);
 
         return "redirect:/auth/login";

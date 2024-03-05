@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update account</title>
+</head>
+<body>
+<div>
+    <form method="post" th:action="@{'/user/update?id=' + ${user.getId()}}" th:object="${user}">
+        <label for="name">Username: </label>
+        <input type="text" th:field="*{userName}" id="name"/>
+        <br/>
+        <label for="lastName">Last name</label>
+        <input type="text" th:field="*{lastName}" id="lastName">
+        <br/>
+        <label for="password">Password: </label>
+        <input type="password" th:field="*{password}" id="password"/>
+        <br/>
+        <label for="email">Email: </label>
+        <input type="text" th:field="*{email}" id="email">
+        <br/>
+        <label for="age">Age: </label>
+        <input type="text" th:field="*{age}" id="age"/>
+        <br/>
+        <label for="roles"></label>
+        <select size="3" multiple="multiple" name="rls" id="rls" required>
+            <option disabled>Roles:</option>
+            <option value="USER" th:selected="${user.roles.contains('USER')}">USER</option>
+            <option value="ADMIN" th:selected="${user.roles.contains('ADMIN')}">ADMIN</option>
+        </select>
+        <br/>
+        <br/>
+        <input type="submit" value="Update!"/>
+    </form>
+</div>
+<br/>
+<a th:href="@{/logout}">Logout</a>
+</body>
+</html>
